@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { transition } from '@angular/core/src/animation/dsl';
+
+import { ShoppingCartService } from './shopping-cart.service';
 
 @Component({
   selector: 'mt-shopping-cart',
@@ -6,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private shoppingCartService: ShoppingCartService) {}
+
 
   ngOnInit() {
+  }
+
+  items(): any[] {
+    return this.shoppingCartService.items;
+  }
+
+  total(): number {
+    return this.shoppingCartService.total()
   }
 
 }
